@@ -11,7 +11,7 @@ def import_from_stdlib(name):
     stdlibdir, _ = os.path.split(code.__file__)
     pyfile = os.path.join(stdlibdir, name + '.py')
     result = types.ModuleType(name)
-    mydict = execfile(pyfile, result.__dict__)
+    exec(compile(open(pyfile).read(), pyfile, 'exec'), result.__dict__)
     return result
 
 _subprocess_stdlib = import_from_stdlib('subprocess')

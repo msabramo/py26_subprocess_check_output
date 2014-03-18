@@ -5,7 +5,7 @@ def test_check_output():
     import subprocess
     assert callable(subprocess.check_output)
     ret = subprocess.check_output(['echo', 'hello world'])
-    assert ret == 'hello world\n'
+    assert ret == b'hello world\n'
 
 def test_Popen():
     import subprocess
@@ -13,7 +13,7 @@ def test_Popen():
     ret = subprocess.Popen(
         ['echo', 'hello world'],
         stdout=subprocess.PIPE).communicate()[0]
-    assert ret == 'hello world\n'
+    assert ret == b'hello world\n'
 
 def test_other_stuff_from_stdlib():
     import subprocess
@@ -29,11 +29,6 @@ def test_other_stuff_from_stdlib():
         '__file__',
         '__name__',
         '__package__',
-        '_active',
-        '_cleanup',
-        '_demo_posix',
-        '_demo_windows',
-        '_eintr_retry_call',
         'call',
         'check_call',
         'list2cmdline',
